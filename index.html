@@ -8,20 +8,19 @@
 <body>
     <script>
         function getComputerChoice() {
-            return Math.floor(Math.random() * 3);
-        }
+            const randomNum = Math.floor(Math.random() * 3);
 
-        const computerChoice = getComputerChoice();
-
-        if (computerChoice === 0) {
-            console.log("Computer chose: Rock")
-        } else if (computerChoice === 1) {
-            console.log("Computer chose: Paper")
-        } else if (computerChoice === 2) {
-            console.log("Computer chose: Scissors")
+        if (randomNum === 0) {
+            return "rock";
+        } else if (randomNum === 1) {
+            return "paper";
         } else {
-            console.log("Invalid computer choice.")
+            return "scissors"
         }
+        }
+
+    const computerChoice = getComputerChoice();
+    console.log("Computer chose:", computerChoice);
 
         function getHumanChoice() {
 
@@ -38,6 +37,31 @@
 
         const humanChoice = getHumanChoice();
         console.log("You chose: ", humanChoice)
+
+
+
+
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function playRound(humanChoice, computerChoice) {
+            if (humanChoice === computerChoice) {
+                console.log("It is a tie!");
+            } else if (
+                (humanChoice === "rock" && computerChoice === "scissors") ||
+                (humanChoice === "paper" && computerChoice === "rock") ||
+                (humanChoice === "scissors" && computerChoice === "paper")
+                ) {
+                    console.log("You win this round!");
+                    humanScore++;
+                } else {
+                    console.log("Computer wins this round!");
+                    computerScore++;
+                }
+        }
+
+        playRound(humanChoice, computerChoice)
+        console.log(`Score - You: ${humanScore}, computer: ${computerScore}`);
     </script>
 </body>
 </html>
