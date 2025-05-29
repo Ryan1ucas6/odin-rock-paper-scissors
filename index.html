@@ -14,14 +14,30 @@
         const computerChoice = getComputerChoice();
 
         if (computerChoice === 0) {
-            console.log("Rock")
+            console.log("Computer chose: Rock")
         } else if (computerChoice === 1) {
-            console.log("Paper")
+            console.log("Computer chose: Paper")
         } else if (computerChoice === 2) {
-            console.log("Scissors")
+            console.log("Computer chose: Scissors")
         } else {
             console.log("Invalid computer choice.")
         }
+
+        function getHumanChoice() {
+
+            const input = prompt("Enter your choice: Rock, Paper or Scissors");
+
+            const choice = input.trim().toLowerCase();
+
+            if (choice === "rock" || choice === "paper" || choice === "scissors") {
+                return choice;
+            } else {
+                alert("Invalid choice. Please select rock, paper or scissors.")
+            }
+        }
+
+        const humanChoice = getHumanChoice();
+        console.log("You chose: ", humanChoice)
     </script>
 </body>
 </html>
