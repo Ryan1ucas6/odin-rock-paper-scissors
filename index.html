@@ -44,26 +44,30 @@
         let computerScore = 0;
 
         function playRound(humanChoice, computerChoice) {
+            let roundResult = "";
+
             if (humanChoice === computerChoice) {
-                console.log("It is a tie!");
+                roundResult = `You both chose ${humanChoice}. It's a tie!`
             } else if (
                 (humanChoice === "rock" && computerChoice === "scissors") ||
                 (humanChoice === "paper" && computerChoice === "rock") ||
                 (humanChoice === "scissors" && computerChoice === "paper")
                 ) {
-                    console.log("You win this round!");
+                    roundResult = `You chose ${humanChoice}, computer chose ${computerChoice}. You win this round!`;
                     humanScore++;
                 } else {
-                    console.log("Computer wins this round!");
+                    roundResult = `You chose ${humanChoice}, computer chose ${computerChoice}. Computer wins this round!`;
                     computerScore++;
                 }
         }
 
         const resultsDiv = document.querySelector("#results");
 
+        resultsDiv.innerHTML = `
+        <p>${roundResult}</p>
+        <p>Score - You: ${humanScore}, Computer: ${computerScore}</p>
+        `;
         
-
-        console.log(`Score - You: ${humanScore}, computer: ${computerScore}`);
     </script>
 </body>
 </html>
