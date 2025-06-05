@@ -6,6 +6,12 @@
     <title>Document</title>
 </head>
 <body>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+
+    <div id="results"></div>
+
     <script>
         function getComputerChoice() {
             const randomNum = Math.floor(Math.random() * 3);
@@ -21,25 +27,18 @@
 
     const computerChoice = getComputerChoice();
     console.log("Computer chose:", computerChoice);
-
-        function getHumanChoice() {
-
-            const input = prompt("Enter your choice: Rock, Paper or Scissors");
-
-            const choice = input.trim().toLowerCase();
-
-            if (choice === "rock" || choice === "paper" || choice === "scissors") {
-                return choice;
-            } else {
-                alert("Invalid choice. Please select rock, paper or scissors.")
-            }
-        }
-
-        const humanChoice = getHumanChoice();
-        console.log("You chose: ", humanChoice)
+    console.log("You chose: ", humanChoice)
 
 
+        const buttons = document.querySelectorAll("button");
 
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                const humanChoice = button.id;
+                const computerChoice = getComputerChoice();
+                playRound(humanChoice, computerChoice);
+            })
+        })
 
         let humanScore = 0;
         let computerScore = 0;
@@ -60,7 +59,10 @@
                 }
         }
 
-        playRound(humanChoice, computerChoice)
+        const resultsDiv = document.querySelector("#results");
+
+        
+
         console.log(`Score - You: ${humanScore}, computer: ${computerScore}`);
     </script>
 </body>
